@@ -1,0 +1,9 @@
+name = 'Yongjun-blog'
+compatibility_date = '2026-05-13'
+
+[build]
+command = 'chmod a+x build.sh && ./build-sh'
+
+[assets]
+directory = './publish'
+not_found_handling = '404-page'
