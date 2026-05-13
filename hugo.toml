@@ -1,0 +1,4 @@
+baseURL = 'https://keistad-root.org/'
+locale = 'en-uk'
+title = 'Blog for Yongjun Choi'
+theme = 'ananke'
