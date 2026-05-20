@@ -1,4 +1,8 @@
-baseURL = 'https://keistad-root.org/'
-locale = 'en-uk'
-title = 'Blog for Yongjun Choi'
-theme = 'ananke'
+baseURL="http://localhost:1313/"
+locale = "ko-kr"
+title = "Blog for Yongjun Choi"
+disableKinds = ["taxonomy", "term"]
+
+[params]
+	description = "Yongjun Choi's personal homepage built with Hugo"
+	math = true

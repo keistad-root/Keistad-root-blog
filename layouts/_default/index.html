@@ -1,0 +1,90 @@
+{{ define "main" }}
+	<nav class="navbar navbar-expand navbar-custom fixed-top justify-content-between">
+		<div class="container nav-container">
+			<a class="navbar-brand font-weight-bold" href="/">{{ with .Params.name }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</a>
+			<ul class="navbar-nav ml-auto flex-row">
+				<li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
+				<li class="nav-item"><a class="nav-link" href="/hobby/">HOBBY</a></li>
+				<li class="nav-item"><a class="nav-link" href="/publication/">PUBLICATION</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container site-container" id="top">
+		<div class="row">
+			<aside class="d-none d-lg-block col-lg-4 col-xl-3 side">
+				<div class="card profile-card">
+					<div class="card-body text-center">
+						<p class="card-text d-none d-sm-block">
+							<a href="/"><img class="profile-image rounded-circle" src="{{ with .Params.profileImage }}{{ . }}{{ else }}https://keistad-root.github.io/theme/img/photo.JPG{{ end }}" alt="{{ with .Params.name }}{{ . }}{{ else }}Profile image{{ end }}"></a>
+						</p>
+						<h4 class="card-title d-none d-sm-block">{{ with .Params.name }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</h4>
+						<p class="card-text mb-1">
+							{{ with .Params.githubUrl }}<a href="{{ . }}">{{ with $.Params.githubLabel }}{{ . }}{{ else }}Github Keistad-root{{ end }}</a>{{ end }}
+						</p>
+						<p class="card-text mb-0">
+							{{ with .Params.locationUrl }}<a href="{{ . }}">{{ with $.Params.locationLabel }}{{ . }}{{ else }}Busan{{ end }}</a>{{ end }}
+						</p>
+					</div>
+				</div>
+			</aside>
+
+			<div class="col-md-12 col-lg-8 col-xl-9 pb-4 content">
+				<div class="card mobile-profile d-lg-none">
+					<div class="card-body text-center">
+						<img class="profile-image rounded-circle" src="{{ with .Params.profileImage }}{{ . }}{{ else }}https://keistad-root.github.io/theme/img/photo.JPG{{ end }}" alt="{{ with .Params.name }}{{ . }}{{ else }}Profile image{{ end }}">
+						<h4 class="card-title mb-2">{{ with .Params.name }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</h4>
+						<p class="card-text mb-1">{{ with .Params.githubUrl }}<a href="{{ . }}">{{ with $.Params.githubLabel }}{{ . }}{{ else }}Github Keistad-root{{ end }}</a>{{ end }}</p>
+						<p class="card-text mb-0">{{ with .Params.locationUrl }}<a href="{{ . }}">{{ with $.Params.locationLabel }}{{ . }}{{ else }}Busan{{ end }}</a>{{ end }}</p>
+					</div>
+				</div>
+
+				<h1 class="page-title">{{ with .Params.eyebrow }}{{ . }}{{ else }}Main page{{ end }}</h1>
+
+				<h2 id="topics">Topics</h2>
+				<div class="grid-container">
+					{{ range .Params.topics }}
+						<div class="grid-item">
+							<a href="{{ with .url }}{{ . }}{{ else }}#top{{ end }}"><h4>{{ .title }}</h4></a>
+						</div>
+					{{ end }}
+				</div>
+
+				<h2 id="profile">Profile</h2>
+				<ul class="plain-list">
+					{{ range .Params.profile }}
+						<li>{{ .label }}: {{ .value }}</li>
+					{{ end }}
+				</ul>
+
+				<h2 id="education">Education</h2>
+				<ul class="plain-list">
+					{{ range .Params.education }}
+						<li>
+							{{ .title }}
+							<ul class="nested-list">
+								{{ range .details }}
+									<li>{{ . }}</li>
+								{{ end }}
+							</ul>
+						</li>
+					{{ end }}
+				</ul>
+
+				<h2 id="career">Career</h2>
+				<ul class="plain-list">
+					{{ range .Params.career }}
+						<li>
+							{{ .title }}
+							<ul class="nested-list">
+								{{ range .details }}
+									<li>{{ . }}</li>
+								{{ end }}
+							</ul>
+						</li>
+					{{ end }}
+				</ul>
+			</div>
+		</div>
+	</div>
+{{ end }}

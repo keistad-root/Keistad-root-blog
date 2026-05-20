@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="ko">
+	<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>CBM TDR Chapter 3 | Blog for Yongjun Choi</title>
+		<meta name="description" content="CBM TDR notes page.">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				min-height: 100vh;
+				padding-top: 80px;
+				font-family: "Helvetica Neue", Helvetica, Arial, "Apple SD Gothic Neo", sans-serif;
+				color: #212529;
+				font-size: 1.2rem;
+				background-color: #ffffff;
+			}
+
+			a {
+				color: #6b3f1d;
+				text-decoration: none;
+			}
+
+			a:hover {
+				color: #2f1c0d;
+				text-decoration: underline;
+			}
+
+			.navbar-custom {
+				background-color: #3d2b1f;
+				border-bottom: 1px solid #3d2b1f;
+				box-shadow: none;
+			}
+
+			.nav-container {
+				align-items: center;
+			}
+
+			.navbar-brand,
+			.nav-link {
+				color: #212529;
+				font-size: 0.95rem;
+				letter-spacing: 0.04em;
+			}
+
+			.navbar-custom .navbar-brand {
+				color: #f5f5dc;
+				font-size: 2rem;
+			}
+
+			.navbar-custom .nav-link {
+				color: #f5f5dc;
+				font-size: 1rem;
+			}
+
+			.navbar-brand:hover,
+			.nav-link:hover {
+				color: #6b3f1d;
+				text-decoration: none;
+			}
+
+			.navbar-custom .navbar-brand:hover,
+			.navbar-custom .nav-link:hover {
+				color: #daa06d;
+			}
+
+			.site-container {
+				padding-top: 80px;
+				max-width: 1500px;
+				margin-top: 0;
+				margin-bottom: 2rem;
+			}
+
+			.side {
+				position: sticky;
+				top: 100px;
+				align-self: flex-start;
+			}
+
+			.content {
+				padding: 0 1.5rem 2rem;
+			}
+
+			.profile-card,
+			.mobile-profile {
+				border: 1px solid #dee2e6;
+				box-shadow: none;
+			}
+
+			.profile-image {
+				width: 75%;
+				margin: 0 auto 1rem;
+				border-radius: 50%;
+				border: 3px solid #eeeeee;
+				display: block;
+			}
+
+			.profile-subtitle {
+				margin-bottom: 1rem;
+				font-size: 0.95rem;
+				color: #6c757d;
+			}
+
+			.profile-links a + a {
+				margin-left: 0.75rem;
+			}
+
+			.page-title {
+				margin-bottom: 1.5rem;
+				padding-bottom: 0.5rem;
+				font-size: 2.4rem;
+				font-weight: 600;
+				border-bottom: 1px solid #dee2e6;
+				line-height: 1;
+			}
+
+			.grid-container {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 16px;
+				padding-top: 1rem;
+			}
+
+			.grid-item {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 100px;
+				padding: 24px;
+				text-align: center;
+				border: 4px solid #d6b588;
+				border-radius: 8px;
+				background: #ffeed4;
+			}
+
+			.grid-item-wide {
+				grid-column: 1 / -1;
+			}
+
+			.grid-item h4 {
+				margin: 0;
+				font-size: 1.35rem;
+				font-weight: 600;
+			}
+
+			.topic-links {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75rem 1rem;
+			}
+
+			.topic-links a {
+				font-weight: 500;
+			}
+
+			.content h2,
+			.content h3 {
+				line-height: 1;
+				padding-bottom: 0.1rem;
+				border-bottom: 2px solid #b08a63;
+			}
+
+			.content h4,
+			.content h5,
+			.content p,
+			.content li {
+				line-height: 1.5;
+			}
+
+			.content h2 {
+				margin-top: 2rem;
+				margin-bottom: 1rem;
+				font-size: 1.7rem;
+			}
+
+			.content h3,
+			.content h5 {
+				margin-top: 1rem;
+				margin-bottom: 0.5rem;
+				font-size: 1.2rem;
+				font-weight: 600;
+			}
+
+			.content-body {
+				font-size: 1rem;
+			}
+
+			.content-body p {
+				margin-bottom: 1rem;
+			}
+
+			.content-body ul,
+			.content-body ol {
+				padding-left: 1.25rem;
+			}
+
+			.content-body img {
+				max-width: 100%;
+				height: auto;
+			}
+
+			.toc-card {
+				margin-bottom: 1.5rem;
+			}
+
+			.toc-card h5 {
+				margin-top: 0;
+				margin-bottom: 0.75rem;
+				font-size: 1rem;
+				font-weight: 600;
+				border-bottom: 0;
+			}
+
+			.header-list {
+				padding-left: 0;
+				list-style: none;
+			}
+
+			.header-list ul {
+				padding-left: 1rem;
+				list-style: none;
+			}
+
+			.header-list li + li {
+				margin-top: 0.35rem;
+			}
+
+			.header-list a {
+				display: block;
+				color: #6b3f1d;
+			}
+
+			.plain-list,
+			.detail-list,
+			.link-list {
+				padding-left: 1.2rem;
+				margin-bottom: 0;
+			}
+
+			.nested-list {
+				padding-left: 1.2rem;
+				margin-top: 0.35rem;
+				margin-bottom: 0.75rem;
+			}
+
+			.plain-list li,
+			.detail-list li,
+			.link-list li,
+			.grid-item p {
+				margin-bottom: 0.55rem;
+			}
+
+			.plain-list li:last-child,
+			.detail-list li:last-child,
+			.link-list li:last-child,
+			.grid-item p:last-child {
+				margin-bottom: 0;
+			}
+
+			.footer-note {
+				margin-top: 1.5rem;
+				font-size: 0.9rem;
+				color: #6c757d;
+			}
+
+			.mobile-profile {
+				margin-bottom: 1.5rem;
+			}
+
+			@media (max-width: 991.98px) {
+				body {
+					padding-top: 74px;
+				}
+
+				.site-container {
+					padding-top: 1rem;
+				}
+
+				.content {
+					padding: 0 0 1.5rem;
+				}
+
+				.mobile-profile {
+					margin-bottom: 2rem;
+				}
+			}
+
+			@media (max-width: 767.98px) {
+				.page-title {
+					font-size: 2rem;
+				}
+
+				.grid-container {
+					grid-template-columns: repeat(2, 1fr);
+					gap: 1rem;
+				}
+
+				.profile-image {
+					width: 140px;
+				}
+
+				.navbar-brand,
+				.nav-link {
+					font-size: 0.85rem;
+				}
+				}
+
+			@media (max-width: 575.98px) {
+				.grid-container {
+					grid-template-columns: 1fr;
+				}
+
+				.navbar-custom .navbar-brand {
+					font-size: 1.4rem;
+				}
+			}
+			}
+		</style>
+	</head>
+	<body>
+		
+	<nav class="navbar navbar-expand navbar-custom fixed-top justify-content-between">
+		<div class="container nav-container">
+			<a class="navbar-brand font-weight-bold" href="/">Yongjun Choi</a>
+			<ul class="navbar-nav ml-auto flex-row">
+				<li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
+				<li class="nav-item"><a class="nav-link" href="/hobby/">HOBBY</a></li>
+				<li class="nav-item"><a class="nav-link" href="/publication/">PUBLICATION</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container site-container" id="top">
+		<div class="row">
+			<aside class="d-none d-lg-block col-lg-4 col-xl-3 side">
+				<div class="card profile-card">
+					<div class="card-body text-center">
+						<p class="card-text d-none d-sm-block">
+							<a href="/"><img class="profile-image rounded-circle" src="https://keistad-root.github.io/theme/img/photo.JPG" alt="Yongjun Choi"></a>
+						</p>
+						<h4 class="card-title d-none d-sm-block">Yongjun Choi</h4>
+						<p class="card-text mb-1">
+							<a href="https://github.com/keistad-root">Github Keistad-root</a>
+						</p>
+						<p class="card-text mb-0">
+							<a href="https://www.google.com/maps/place/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD&#43;%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C/@35.189234,128.8688547,11z/data=!3m1!4b1!4m6!3m5!1s0x3568eb6de823cd35:0x35d8cb74247108a7!8m2!3d35.2100142!4d129.0688702!16zL20vMGh2N2w?entry=ttu">Busan</a>
+						</p>
+					</div>
+				</div>
+			</aside>
+
+			<div class="col-md-12 col-lg-8 col-xl-9 pb-4 content">
+				<div class="card mobile-profile d-lg-none">
+					<div class="card-body text-center">
+						<img class="profile-image rounded-circle" src="https://keistad-root.github.io/theme/img/photo.JPG" alt="Yongjun Choi">
+						<h4 class="card-title mb-2">Yongjun Choi</h4>
+						<p class="card-text mb-1"><a href="https://github.com/keistad-root">Github Keistad-root</a></p>
+						<p class="card-text mb-0"><a href="https://www.google.com/maps/place/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD&#43;%EB%B6%80%EC%82%B0%EA%B4%91%EC%97%AD%EC%8B%9C/@35.189234,128.8688547,11z/data=!3m1!4b1!4m6!3m5!1s0x3568eb6de823cd35:0x35d8cb74247108a7!8m2!3d35.2100142!4d129.0688702!16zL20vMGh2N2w?entry=ttu">Busan</a></p>
+					</div>
+				</div>
+
+				
+					<div class="d-md-block d-lg-none toc-card">
+						<div class="card">
+							<div class="card-body">
+								<h5>On This Page</h5>
+								<nav id="TableOfContents">
+  <ul>
+    <li><a href="#cbm-실험의-동작">CBM 실험의 동작</a>
+      <ul>
+        <li><a href="#연간-운행-시간-및-빔-조건">연간 운행 시간 및 빔 조건</a></li>
+        <li><a href="#인터렉션-비율과-cbm-셋업">인터렉션 비율과 CBM 셋업</a></li>
+        <li><a href="#온라인-데이터-흐름">온라인 데이터 흐름</a></li>
+      </ul>
+    </li>
+    <li><a href="#검출기에서-얻은-데이터-전송률">검출기에서 얻은 데이터 전송률</a>
+      <ul>
+        <li><a href="#미가공-데이터-이벤트-크기-및-검출기-암흑-비율">미가공 데이터 이벤트 크기 및 검출기 암흑 비율</a></li>
+        <li><a href="#fles-단계에서-미가공-데이터-비율">FLES 단계에서 미가공 데이터 비율</a></li>
+        <li><a href="#전체-미가공-데이터-비용">전체 미가공 데이터 비용</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+							</div>
+						</div>
+					</div>
+				
+
+				<h1 class="page-title">CBM TDR Chapter 3</h1>
+				<div class="content-body">
+					<h1 id="chapter-3---요구조건과-제약조건">Chapter 3 - 요구조건과 제약조건</h1>
+<h2 id="cbm-실험의-동작">CBM 실험의 동작</h2>
+<h3 id="연간-운행-시간-및-빔-조건">연간 운행 시간 및 빔 조건</h3>
+<ul>
+<li>SIS는 연간 6000 시간(250 일)을 작동할 예정이며, 추출 속도가 고정 타겟 실험보다 저장 링 실험이 더 빠르기 때문에 CBM에서는 100 일(2400 시간, 8 600 000 초)를 운용할 예정이다.</li>
+<li>그 중 실험 런 타임을 약 80%로 예상하고 이는 1920 시간(6 900 000 초) 정도이다.</li>
+<li>듀티 사이클은 약 75% 정도로 연간 5 200 000 초의 빔을 CBM 타겟에 제공한다.</li>
+<li>SIS100에서 주입하는 빔 인텐시티는 아직 예상값이 없다.</li>
+</ul>
+<h3 id="인터렉션-비율과-cbm-셋업">인터렉션 비율과 CBM 셋업</h3>
+<p>용어 정의</p>
+<ul>
+<li>
+<p>피크 비율($R_{peak}$): 최대 순간 비율, $T_{peak} \sim 10,\mathrm{\mu s}$</p>
+</li>
+<li>
+<p>평균 비율($R_{average}$): 평균 주입 비율, $T_{average} \sim 수,\mathrm{ms}$</p>
+</li>
+<li>
+<p>지속 비율($R_{sustained}$): 작동 중 평균 데이터 수집 비율, $R_{sustained} \sim 10,\mathrm{s}$</p>
+</li>
+<li>
+<p>다음과 같이 가정함</p>
+</li>
+</ul>
+<p>${R_{peak} \over R_{average}} = 2 $, ${R_{sustained} \over R_{average}} = {3 \over 4}$</p>
+<p>검출기 별 비율</p>
+<ul>
+<li>MVD와 PSD를 제외한 검출기 시스템은 $p_{beam} = 12,\mathrm{A,GeV/c}$인 최소 편향 $\mathrm{Au}+\mathrm{Au}$ 충돌 기준 $R_{peak} \sim 10^7\mathrm{/s}$임.</li>
+<li>MVD는 $\delta$-전자에 의한 부하 때문에 $R_{average} \sim 10^5,\mathrm{/s}$ 정도.</li>
+<li>PSD는 일정한 파장 편이 시간 때문에 $R_{peak} \sim 10^6\mathrm{/s}$ 정도임.</li>
+</ul>
+<p>물리 목적에 따른 검출기 셋업</p>
+<ul>
+<li>CBM은 목적으로 하는 물리마다 검출기 시스템의 조합을 유연하게 가져감.</li>
+<li>하드론 셋업
+<ul>
+<li>STS, TRD, TOF로 구성됨.</li>
+<li>multi-strange hyperon이나 hyper-nuclei 같은 하드론 프로브에 접근함.</li>
+<li>가장 높은 인터렉션 비율에서 작동됨.</li>
+<li>이벤트 평면의 결정을 위한 PSD 때문에 $R_{peak}\sim10^6,\mathrm{\s}$로 수행됨.</li>
+</ul>
+</li>
+<li>전자 셋업
+<ul>
+<li>하드론 셋업 + MVD, RICH, PSD로 구성됨.</li>
+<li>하드론 프로브와 전자 쌍을 동시에 측정 가능</li>
+<li>MVD 한계 때문에 $R_{average}\sim 10^6 ,\mathrm{/s}$ 정도임.</li>
+</ul>
+</li>
+<li>뮤온 셋업
+<ul>
+<li>STS, MUCH, TRD, TOF로 구성됨</li>
+<li>뮤온 페어를 측정</li>
+<li>가장 높은 인터렉션 비율에서 작동</li>
+</ul>
+</li>
+</ul>
+<h3 id="온라인-데이터-흐름">온라인 데이터 흐름</h3>
+<p>인터렉션 비율에 따른 DAQ 시스템, FLES 엔트리 클러스터의 역할</p>
+<ul>
+<li>검출기 프론트엔드에서 전달된 미가공 데이터는 다수의 다른 리드아웃 체인에서 통합되어 FLES 엔트리 클러스터로 흘러감.</li>
+<li>FLES 엔트리 클러스터에는 FPGA 인터페이스 카드(CRI)가 장착된 서버 컴퓨터 세트임.</li>
+<li>이 때 DAQ 시스템은 최대 순간 인터렉션 비율인 $10^{7} ,\mathrm{/s}$를 대처하도록 설계됨.</li>
+<li>DAQ 하드웨어와 FLES 엔트리 클러스터는 주입되는 빔 인텐시티 변화를 완충함.</li>
+</ul>
+<p>온라인 데이터 처리의 역할</p>
+<ul>
+<li>엔트리 클러스터의 크기는 실험의 대역폭과 연결성에 의해 결정됨</li>
+<li>엔트리 클러스터는 실험과 가깝게 설치되어 있으며 CBM에서 디자인하고 작동을 책임짐</li>
+<li>엔트리 클러스터는 Green IT Cube에 있는 컴퓨터 클러스터로 장거리 InfiniBand를 통해 연결됨.</li>
+<li>엔트리를 실행하는 Flesnet 소프트웨어와 프로세스 노드는 미가공 데이터를 타임슬라이스로 통합시킴.</li>
+<li>이러한 미가공 데이터는 실시간으로 프로세스 노드로 배달됨</li>
+<li>온라인 데이터 처리는 영구 저장장치에 저장할 미가공 데이터를 선별하는 역할을 함.</li>
+</ul>
+<h2 id="검출기에서-얻은-데이터-전송률">검출기에서 얻은 데이터 전송률</h2>
+<h3 id="미가공-데이터-이벤트-크기-및-검출기-암흑-비율">미가공 데이터 이벤트 크기 및 검출기 암흑 비율</h3>
+<p>시뮬레이션을 통한 미가공 데이터 크기 평가</p>
+<ul>
+<li>최소 편향 $p_{beam}=12 A,\mathrm{GeV/c}$$Au+Au$ 충돌의 시뮬레이션을 통해 미가공 데이터 크기를 평가함</li>
+<li>시뮬레이션을 통해 각 검출기 시스템의 이벤트 당 미가공 검출기 히트의 개수를 산출함.</li>
+<li>이 때 다음 경우를 따르는 단일-메시지 크기를 가중해주어야함.
+<ul>
+<li>검출기 하드웨어에의해 CRI로 가는 이벤트 크기를 결정하기위한 프론트-엔드 ASIC의 전류 디자인에서 얻은 단일-이벤트 크기</li>
+<li>검출기의 CRI 디자인 컴포넌트에 의해 FLES 엔트리 클러스터로 가는 FLES 타임슬라이스 내의 단일-이벤트 크기</li>
+</ul>
+</li>
+</ul>
+<p>미가공 검출기 히트 수에 대한 후보군</p>
+<ul>
+<li>미가공 검출기 히트 수에는 예상되는 백그라운드와 상호작용 비율에 의존적인 오버헤드 요소들을 포함</li>
+<li>빔 입자의 효과도 평균 이벤트 사이즈에 합하는 형태로 포함됨 - beam/target 상호작용 확률을 1%로 예상</li>
+<li>검출기의 암흑 비율 수에 노이즈에 의한 예상 데이터와 주기적 중요 사건 메시지같은 오버헤드 디지털 리드아웃도 포함</li>
+</ul>
+<p>오버헤드</p>
+<ul>
+<li>데이터 값은 바이트로 제공됨</li>
+<li>물리적 링크 비트 비용은 링크의 인코딩에 의한 오버헤드 때문에 약간 높음.</li>
+<li>마이크로슬라이스와 타임슬라이스 컨네이너에 의한 오버헤드는 작아서 무시됨.</li>
+</ul>
+<h3 id="fles-단계에서-미가공-데이터-비율">FLES 단계에서 미가공 데이터 비율</h3>
+<p>각 검출기별 CRI 할당</p>
+<ul>
+<li>표 3.2 참조</li>
+<li>RICH는 MVD 업그레이드에 대한 예상 때문에 높은 상호작용 비율로 설계됨
+<ul>
+<li>RICH의 CRI는 다른 검출기와 비교했을 때 적당히 많지 않음.</li>
+</ul>
+</li>
+<li>PSD와 BMON은 CRI를 전부 쓰지 않더라도 각각 CRI가 하나씩 할당됨.
+<ul>
+<li>단일 CRI 내에서 다른 시스템에 의한 데이터 섞임이 발생하지 않게 하기 위함.</li>
+</ul>
+</li>
+</ul>
+<p>예상되는 CRI 총량</p>
+<ul>
+<li>검출기의 리드아웃 트리의 레이아웃이 지오메트리와 실용적인 제약을 따라야 함.
+<ul>
+<li>CIR를 거치는 각 서브시스템의 전체 데이터 비용의 분포는 각각 다름</li>
+</ul>
+</li>
+<li>가장 활성화된 CRI의 데이터 비용과 평균 CRI 데이터 비용간의 비율
+<ul>
+<li>STS -&gt; 1.2</li>
+<li>다른 서브시스템 -&gt; 1.3</li>
+</ul>
+</li>
+<li>약 2배 정도 안전 마진을 두기 위해, CRI/FLES 인터페이스에 요구되는 최대 대역폭은 $8,\mathrm{GB/s}$ 정도.
+<ul>
+<li>총 CRI 수는 200개 정도임.</li>
+</ul>
+</li>
+</ul>
+<h3 id="전체-미가공-데이터-비용">전체 미가공 데이터 비용</h3>
+<ul>
+<li>
+<p>Green IT Cube 이전 기계 작동 주기 동안 평균을 내지 않는다면 평균 유출 상호작용 비율은 적용되어야 함.</p>
+<ul>
+<li>이 평균 유출 상호작용 비율은 FLES 타임슬라이스 빌딩 작동과 온라인 프로세싱으로의 전달에 대한 관련 요수 사항을 묘사함.</li>
+</ul>
+</li>
+<li>
+<p>하드론 셋업에서 가장 높은 대역폭을 요구하며, 전체 데이터 비용은 $400,\mathrm{GB/s}$이다.</p>
+</li>
+<li>
+<p>비용은 평균 상호작용 비율과 미가공 데이터 이벤트 사이즈에 비례한다.</p>
+</li>
+<li>
+<p>우발적 요인 1.5를 곱하여 최소 대역폭 요구사항은 $600,\mathrm{GB/s}$이다.</p>
+</li>
+</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	</body>
+</html>
